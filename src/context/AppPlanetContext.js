@@ -1,7 +1,5 @@
 import { createContext } from 'react';
 
-const AppContext = createContext({
-  planets: [],
-});
+const AppContext = createContext();
 
 export default AppContext;

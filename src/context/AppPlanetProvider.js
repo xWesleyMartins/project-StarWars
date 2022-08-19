@@ -5,6 +5,7 @@ import API from '../ultils/planetAPI';
 
 function AppProvider({ children }) {
   const [planets, setPlanets] = useState([]);
+  const [filterByName, setFilterByName] = useState('');
 
   useEffect(() => {
     const getResultsApi = async () => {
@@ -16,7 +17,7 @@ function AppProvider({ children }) {
 
   return (
     <AppContext.Provider
-      value={ { planets } }
+      value={ { planets, filterByName, setFilterByName } }
     >
       {children}
     </AppContext.Provider>

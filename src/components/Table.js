@@ -2,45 +2,51 @@ import React, { useContext } from 'react';
 import AppContext from '../context/AppPlanetContext';
 
 function Table() {
-  const { planets } = useContext(AppContext);
+  const { planets, filterByName } = useContext(AppContext);
+  const tHeadRows = [
+    'name',
+    'rotation_period',
+    'orbital_period',
+    'diameter',
+    'climate',
+    'gravity',
+    'terrain',
+    'surface_water',
+    'population',
+    'films',
+    'created',
+    'edited',
+    'url',
+  ];
+
   return (
     <div>
       <table>
         <thead>
           <tr>
-            <th>name</th>
-            <th>rotation_period</th>
-            <th>orbital_period</th>
-            <th>diameter</th>
-            <th>climate</th>
-            <th>gravity</th>
-            <th>terrain</th>
-            <th>surface_water</th>
-            <th>population</th>
-            <th>films</th>
-            <th>created</th>
-            <th>edited</th>
-            <th>url</th>
+            {tHeadRows.map((infosRows) => <th key={ infosRows }>{infosRows}</th>)}
           </tr>
         </thead>
         <tbody>
-          {planets.map((infoPlanet) => (
-            <tr key={ infoPlanet.name }>
-              <td>{infoPlanet.name}</td>
-              <td>{infoPlanet.rotation_period}</td>
-              <td>{infoPlanet.orbital_period}</td>
-              <td>{infoPlanet.diameter}</td>
-              <td>{infoPlanet.climate}</td>
-              <td>{infoPlanet.gravity}</td>
-              <td>{infoPlanet.terrain}</td>
-              <td>{infoPlanet.surface_water}</td>
-              <td>{infoPlanet.population}</td>
-              <td>{infoPlanet.films}</td>
-              <td>{infoPlanet.created}</td>
-              <td>{infoPlanet.edited}</td>
-              <td>{infoPlanet.url}</td>
-            </tr>
-          ))}
+          { planets.filter((valueToFilter) => valueToFilter.name
+            .includes(filterByName))
+            .map((infoPlanet) => (
+              <tr key={ infoPlanet.name }>
+                <td>{infoPlanet.name}</td>
+                <td>{infoPlanet.rotation_period}</td>
+                <td>{infoPlanet.orbital_period}</td>
+                <td>{infoPlanet.diameter}</td>
+                <td>{infoPlanet.climate}</td>
+                <td>{infoPlanet.gravity}</td>
+                <td>{infoPlanet.terrain}</td>
+                <td>{infoPlanet.surface_water}</td>
+                <td>{infoPlanet.population}</td>
+                <td>{infoPlanet.films}</td>
+                <td>{infoPlanet.created}</td>
+                <td>{infoPlanet.edited}</td>
+                <td>{infoPlanet.url}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
