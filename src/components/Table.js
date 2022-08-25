@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../context/AppPlanetContext';
+// import { tratamentoDeDados } from '../context/AppPlanetProvider';
 
 function Table() {
   const { planets, filterByName } = useContext(AppContext);
@@ -28,8 +29,8 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          { planets.filter((valueToFilter) => valueToFilter.name
-            .includes(filterByName))
+          { planets.filter((valueToFilter) => valueToFilter.name.toLowerCase()
+            .includes(filterByName.toLowerCase()))
             .map((infoPlanet) => (
               <tr key={ infoPlanet.name }>
                 <td>{infoPlanet.name}</td>
