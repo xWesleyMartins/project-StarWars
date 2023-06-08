@@ -47,7 +47,7 @@ function AppProvider({ children }) {
           .filter((el) => Number(el[element.column]) === Number(element.value)));
         break;
       default:
-        return true;
+        return global.alert('Comparação não encontrada');
       }
       const columnFilter = columnOptions.filter((filColumn) => filColumn
       !== selected.column);
